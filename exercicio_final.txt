@@ -1,0 +1,10 @@
+Exercicio Final de Angular:
+
+Pegar no ultimo exercicio de routing da biblioteca e:
+
+ - implementatar a gestão de state global com um BehaviorSubject()
+ - consumir e atualizar o state local com o HTTPClient
+ - usar sempre que possivel o pipe "async" nas subscrições
+ - Implementar funções de DELETE BOOK,
+ - Implementar funcionalidades de filtrar, por livros lidos e não lidos
+ - Implementar pesqusia por titulo do livro, implemento+ando observables com "debouceTime"
