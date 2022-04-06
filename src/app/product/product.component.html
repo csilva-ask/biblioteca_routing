@@ -1,0 +1,11 @@
+<section>
+  <h1>ISTO É PRODUCT</h1>
+  <section class="grid" >
+    <article [routerLink]="['/product', book.id]" *ngFor="let book of books |async">
+      <h1>{{book.title}}</h1>
+      <h2>{{book.author}}</h2>
+      <img src="assets/livros/{{ book.imageUrl }}" />
+      <p>Already Read: {{book.alreadyRead ? '✔' : '✘'}}</p>
+    </article>
+  </section>
+</section>
