@@ -12,10 +12,12 @@ export class ProductComponent{
 
   books: Observable<Book[]>;
 
-
-  constructor(bookService: BookService) {
+  constructor(private bookService: BookService) {
     this.books = bookService.getBooks();
+   }
 
+   handleDelete(bookId: number){
+     this.bookService.deleteBook(bookId)
    }
 
 }
