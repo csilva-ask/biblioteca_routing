@@ -11,14 +11,9 @@ import { StoreService } from './store.service';
 
 export class BookService {
 
-
-
-  constructor(private state: StoreService){
-  }
-
+  constructor(private state: StoreService){}
 
   getBooks(): Observable<Book[]> {
-
     return this.state.getState()
   }
 
@@ -30,5 +25,11 @@ export class BookService {
   return this.getBooks().pipe(map(res =>res.filter( b => b.id !== bookId))).subscribe(a => this.state.updateState(a));
   }
 
+  filterBook(alreadyRead: boolean){
+    return this.getBooks().pipe(map(res =>res.filter( b => b.alreadyRead === alreadyRead)));
+  }
 
+  searchBook(input: string, fbook: Observable<Book[]>){
+    return fbook.pipe(map(res =>res.filter( b => b.title.toLowerCase().includes(input.toLowerCase()) )));
+  }
 }

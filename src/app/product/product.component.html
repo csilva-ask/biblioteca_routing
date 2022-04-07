@@ -1,12 +1,39 @@
 <section>
   <h1>ISTO É PRODUCT</h1>
+  <section class="filters">
+    <article>
+      <input type="radio" name="rad" id="all" (change)="handleFilterBook(all.checked)" #all [defaultChecked]="true"/>
+      <!-- <input type="checkbox" #mySelect1 (change)="filterBook(mySelect1.id, mySelect1.checked)"/> -->
+      <label for="all">Todos</label>
+    </article>
+    <article>
+      <input type="radio" name="rad" id="read" (change)="handleFilterBook(read.checked)" #read />
+      <!-- <input type="checkbox" #mySelect1 (change)="filterBook(mySelect1.id, mySelect1.checked)"/> -->
+      <label for="read">Lidos</label>
+    </article>
+    <article>
+      <input type="radio" name="rad" id="notRead" (change)="handleFilterBook(notRead.checked)" #notRead />
+      <!-- <input type="checkbox" #mySelect2 (change)="filterBook(mySelect2.id, mySelect2.checked)"/> -->
+      <label for="notRead">Não Lidos</label>
+    </article>
+    <article>
+      <label for="searchbar">Search by Title: </label>
+      <input type="text" id="searchbar"  name="search" placeholder="Insert Title" [formControl]="searchInput"/>
+    </article>
+  </section>
+
   <section class="grid" >
-    <article  *ngFor="let book of books |async">
+
+    <article class="card" *ngFor="let book of books |async">
+
       <h1>{{book.title}}</h1>
       <h2>{{book.author}}</h2>
       <img [routerLink]="['/product', book.id]" src="assets/livros/{{ book.imageUrl }}" />
       <p>Already Read: {{book.alreadyRead ? '✔' : '✘'}}</p>
       <button (click)="handleDelete(book.id)">Delete</button>
+
     </article>
+
   </section>
+
 </section>
