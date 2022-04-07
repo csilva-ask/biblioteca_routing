@@ -12,9 +12,13 @@ export class ProductComponent{
 
   books: Observable<Book[]>;
 
+
   constructor(bookService: BookService) {
     this.books = bookService.getBooks();
+
    }
 
-
 }
+
+
+

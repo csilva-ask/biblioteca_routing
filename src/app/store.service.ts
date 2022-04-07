@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, from } from 'rxjs';
+import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { Book } from './book';
 import { BookService } from './book.service';
 
@@ -9,23 +9,26 @@ import { BookService } from './book.service';
 })
 export class StoreService {
 
-  private store$ = new BehaviorSubject<Book[]> ([]);
+  private store$: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]> ([]);
 
-  books$: any;
 
   constructor(http: HttpClient) {
-    this.books$ = http.get<Book[]>('data/books.json');
-    this.store$.next(this.books$)
+    http.get<Book[]>('data/books.json').subscribe(data => this.state = data);
   }
 
+
+  set state(books: Book[]) {
+    this.store$.next(books)
+  }
+
+
   getState (){
-    return this.store$.getValue();
+    return this.store$.asObservable();
   }
 
   updateState (newBooks$: any) {
     return this.store$.next(newBooks$)
   }
-
 
 
 }

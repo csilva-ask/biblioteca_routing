@@ -11,18 +11,19 @@ import { StoreService } from './store.service';
 
 export class BookService {
 
-  constructor( private http: HttpClient, private state: StoreService){
+
+
+  constructor(private state: StoreService){
   }
 
 
-  getBooks(): any{
+  getBooks(): Observable<Book[]> {
+
     return this.state.getState()
   }
 
-  getBookById(bookId: number) {
-    console.log(this.state.getState())
-    return this.state.getState().filter(b => b.id === bookId);
-
+  getBookById(bookId: number): Observable<Book[]> {
+    return this.getBooks().pipe(map(res =>res.filter( b => b.id === bookId)));
   }
 
 }

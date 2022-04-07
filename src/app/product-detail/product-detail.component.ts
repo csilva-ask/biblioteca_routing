@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { from, map, Observable } from 'rxjs';
+import { from, map, Observable, of } from 'rxjs';
 import { Book } from '../book';
 import { BookService } from '../book.service';
 
@@ -20,7 +20,7 @@ export class ProductDetailComponent{
 
   constructor(private route: ActivatedRoute, bookService: BookService) {
     this.productId = route.snapshot.paramMap.get("id");
-    this.books = from([bookService.getBookById(Number(this.productId))]);
+    this.books = bookService.getBookById(Number(this.productId));
     console.log(this.books)
   }
 
