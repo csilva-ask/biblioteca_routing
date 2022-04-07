@@ -27,15 +27,12 @@ export class ProductComponent{
   handleFilterBook(checked: boolean){
 
     if (this.read.nativeElement.checked === checked){
-
       this.books = this.bookService.filterBook(true);
 
     }else if (this.notRead.nativeElement.checked === checked){
-
       this.books = this.bookService.filterBook(false);
 
     }else{
-
       this.books = this.bookService.getBooks();
     }
   }
