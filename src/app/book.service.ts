@@ -29,7 +29,7 @@ export class BookService {
     return this.getBooks().pipe(map(res =>res.filter( b => b.alreadyRead === alreadyRead)));
   }
 
-  searchBook(input: string, fbook: Observable<Book[]>){
-    return fbook.pipe(map(res =>res.filter( b => b.title.toLowerCase().includes(input.toLowerCase()) )));
+  searchBook(input: string){
+    return this.getBooks().pipe(map(res =>res.filter( b => b.title.toLowerCase().includes(input.toLowerCase()) )));
   }
 }

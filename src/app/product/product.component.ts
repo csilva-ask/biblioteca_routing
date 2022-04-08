@@ -27,12 +27,15 @@ export class ProductComponent{
   handleFilterBook(checked: boolean){
 
     if (this.read.nativeElement.checked === checked){
+
       this.books = this.bookService.filterBook(true);
 
     }else if (this.notRead.nativeElement.checked === checked){
+
       this.books = this.bookService.filterBook(false);
 
     }else{
+
       this.books = this.bookService.getBooks();
 
     }
@@ -47,7 +50,7 @@ export class ProductComponent{
 
     this.searchInput.valueChanges.pipe(
       debounceTime(400),
-      switchMap(a => a.length >0 ? this.bookService.searchBook(a, this.books): this.books)
+      switchMap(a => this.bookService.searchBook(a))
     ).subscribe({
       next: resp => this.books = of(resp),
       error: err => console.log('erro')
