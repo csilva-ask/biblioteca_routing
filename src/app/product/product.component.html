@@ -1,25 +1,28 @@
 <section>
   <h1>ISTO É PRODUCT</h1>
+
   <section class="filters">
+
     <article>
       <input type="radio" name="rad" id="all" (change)="handleFilterBook()" #all [defaultChecked]="true"/>
-      <!-- <input type="checkbox" #mySelect1 (change)="filterBook(mySelect1.id, mySelect1.checked)"/> -->
       <label for="all">Todos</label>
     </article>
+
     <article>
       <input type="radio" name="rad" id="read" (change)="handleFilterBook()" #read />
-      <!-- <input type="checkbox" #mySelect1 (change)="filterBook(mySelect1.id, mySelect1.checked)"/> -->
       <label for="read">Lidos</label>
     </article>
+
     <article>
       <input type="radio" name="rad" id="notRead" (change)="handleFilterBook()" #notRead />
-      <!-- <input type="checkbox" #mySelect2 (change)="filterBook(mySelect2.id, mySelect2.checked)"/> -->
       <label for="notRead">Não Lidos</label>
     </article>
+
     <article>
       <label for="searchbar">Search by Title: </label>
       <input type="text" id="searchbar" #searchbar name="search" placeholder="Insert Title" [formControl]="searchInput"/>
     </article>
+
   </section>
 
   <section class="grid" >

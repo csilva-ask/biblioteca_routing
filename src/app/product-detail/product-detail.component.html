@@ -1,20 +1,12 @@
 <section class="detail" *ngFor="let test of books | async">
+
   <article >
     <h1>{{test.title}}</h1>
     <h2>{{test.author}}</h2>
     <img src="assets/livros/{{ test.imageUrlGr}}" />
-
   </article >
+
   <p>{{test.description}}</p>
+
 </section>
-
-<!-- <section class="detail">
-  <article >
-    <h1>{{latestBook.title}}</h1>
-    <h2>{{latestBook.author}}</h2>
-    <img src="assets/livros/{{ latestBook.imageUrlGr}}" />
-
-  </article >
-  <p>{{latestBook.description}}</p>
-</section> -->
 
